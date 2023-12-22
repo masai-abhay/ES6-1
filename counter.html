@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+     
+      text-align: center;
+      margin: 50px;
+    }
+    #counter {
+      font-size: 20px;
+    }
+  </style>
+  <title>Counter App</title>
+</head>
+<body>
+
+  <h1>Counter App</h1>
+
+  <p id="counter">0</p>
+
+  <button id="toggleButton" onclick="toggleCounter()">Start / Stop</button>
+  <button onclick="manualIncrement()">Increment</button>
+  <button onclick="manualDecrement()">Decrement</button>
+
+  <script>
+    let counterValue = 0;
+    let intervalId = null;
+
+    function updateCounter() {
+      document.getElementById('counter').innerText = counterValue;
+    }
+
+    function automaticIncrement() {
+      counterValue++;
+      updateCounter();
+    }
+
+    function toggleCounter() {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      } else {
+        intervalId = setInterval(automaticIncrement, 1000);
+      }
+    }
+
+    function manualIncrement() {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+      counterValue++;
+      updateCounter();
+    }
+
+    function manualDecrement() {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+      counterValue--;
+      updateCounter();
+    }
+  </script>
+
+</body>
+</html>
